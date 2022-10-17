@@ -1,7 +1,7 @@
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "$HOME/Music";
+    musicDirectory = "/home/mado/Music";
 
     extraConfig = ''
       audio_output {

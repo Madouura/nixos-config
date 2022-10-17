@@ -35,7 +35,7 @@
   system.stateVersion = "22.05";
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "America/Chicago";
-  systemd.tmpfiles.rules = [ "L+ /run/gdm/.config/monitors.xml - - - - ${secrets.monitors}" ];
+  # systemd.tmpfiles.rules = [ "L+ /run/gdm/.config/monitors.xml - - - - ${secrets.monitors}" ];
   users.users.mado.extraGroups = [ "kvm" "rtkit" ];
 
   nix = {

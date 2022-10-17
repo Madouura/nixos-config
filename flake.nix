@@ -41,6 +41,7 @@
           utils.nixosModules.autoGenFromInputs
           home-manager.nixosModules.home-manager
           agenix.nixosModules.age
+          impermanence.nixosModule
 
           {
             home-manager = {
@@ -50,7 +51,6 @@
 
               extraSpecialArgs = {
                 inherit inputs;
-                headless = false;
                 desktop = true;
               };
             };
@@ -68,6 +68,7 @@
           utils.nixosModules.autoGenFromInputs
           home-manager.nixosModules.home-manager
           agenix.nixosModules.age
+          impermanence.nixosModule
 
           {
             home-manager = {
@@ -77,7 +78,6 @@
 
               extraSpecialArgs = {
                 inherit inputs;
-                headless = false;
                 desktop = false;
               };
             };
