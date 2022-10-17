@@ -2,6 +2,7 @@
 
 {
   imports = [
+    "${inputs.self}/packages/bcachefs.nix"
     "${inputs.self}/packages/gamescope.nix"
     "${inputs.self}/packages/ledger-live-desktop.nix"
     "${inputs.self}/packages/monero-cli.nix"
