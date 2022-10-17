@@ -9,11 +9,11 @@ let
     mado-tsuki = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG1HwfqoYwv92oJbIHHAKx+6S2ppCSxS58XggddZiv8A mado@tsuki";
   };
 
-  allUsers = builtins.attrValues users;
   allSystems = builtins.attrValues systems;
+  allUsers = builtins.attrValues users;
 in {
-  "avatar.png.age".publicKeys = allUsers ++ [ systems.tsuki systems.ura ];
-  "gdm.age".publicKeys = allUsers ++ [ systems.tsuki systems.ura ];
-  "monero_pubaddr.age".publicKeys = allUsers ++ [ systems.tsuki systems.ura ];
-  "ura_monitors.xml.age".publicKeys = allUsers ++ [ systems.ura ];
+  "avatar.png.age".publicKeys = allSystems ++ allUsers;
+  "gdm.age".publicKeys = allSystems ++ allUsers;
+  "monero_pubaddr.age".publicKeys = allSystems ++ allUsers;
+  "ura_monitors.xml.age".publicKeys = [ systems.ura users.mado-ura ];
 }
