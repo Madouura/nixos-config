@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
-  # systemd.tmpfiles.rules = [ "L+ /run/gdm/.config/monitors.xml - - - - ${secrets.monitors}" ];
+  systemd.tmpfiles.rules = [ "L+ /run/gdm/.config/monitors.xml - - - - ${ config.age.secrets.ura_monitors.path }" ];
 }

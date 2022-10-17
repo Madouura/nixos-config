@@ -4,9 +4,9 @@
     files = [ "/etc/machine-id" ];
 
     directories = [
-      { directory = "/etc/crypto"; mode = "0700"; }
       "/etc/NetworkManager/system-connections"
       "/etc/nixos"
+      "/etc/ssh"
       "/nix/var/nix"
       "/root"
       { directory = "/home/mado"; user = "mado"; group = "mado"; mode = "0700"; }

@@ -11,8 +11,10 @@
     ./modules/other/gnome.nix
     ./modules/other/libvirtd.nix
     ./modules/other/pipewire.nix
+    ./modules/other/openssh.nix
     ./modules/other/waydroid.nix
 
+    ./modules/system/agenix.nix
     ./modules/system/boot.nix
     ./modules/system/disks.nix
     ./modules/system/hardware.nix
