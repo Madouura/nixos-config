@@ -6,7 +6,6 @@
     ./hardware-configuration.nix
     ./persistent.nix
 
-    ./modules/corectrl.nix
     ./modules/gamemode.nix
     ./modules/gnome.nix
     ./modules/pipewire.nix

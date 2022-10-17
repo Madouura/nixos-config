@@ -1,7 +1,7 @@
 {
   services.xserver = {
     digimend.enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "amdgpu" "nvidia" ];
 
     deviceSection = ''
       Option "TearFree"        "true"

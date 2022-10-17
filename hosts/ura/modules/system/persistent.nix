@@ -1,12 +1,7 @@
 {
-  # fileSystems."/persist" = {
-  #   device = "zroot/persist";
-  #   fsType = "zfs";
-  #   neededForBoot = true;
-  # };
-
   environment.persistence."/persistent" = {
     hideMounts = true;
+    files = [ "/etc/machine-id" ];
 
     directories = [
       { directory = "/etc/crypto"; mode = "0700"; }
@@ -22,10 +17,6 @@
       "/var/lib/systemd/coredump"
       { directory = "/var/lib/tor"; user = "tor"; group = "tor"; mode = "0700"; }
       "/var/log"
-    ];
-
-    files = [
-      "/etc/machine-id"
     ];
   };
 }

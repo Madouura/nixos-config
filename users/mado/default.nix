@@ -3,7 +3,7 @@
 {
   # https://github.com/MatthewCroughan/nixcfg/blob/f6188561e9ebc6023d9129dca2912d1398db3cb6/users/matthew/default.nix#L4-L10
   imports = [
-    (inputs.impermanence + "/home-manager.nix")
+    "${inputs.impermanence}/home-manager.nix"
     ./modules/bash.nix
     ./modules/git.nix
     ./modules/mining.nix
