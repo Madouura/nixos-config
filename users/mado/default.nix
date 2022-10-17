@@ -17,7 +17,7 @@
     username = "mado";
     homeDirectory = "/home/mado";
 
-    persistence."/persistent/home/mado" = {
+    persistence."/nix/persist/home/mado" = {
       directories = [
         { directory = ".gnupg"; } # mode = "0700"; }
         ".p2pool"

@@ -1,5 +1,5 @@
 {
-  environment.persistence."/persistent" = {
+  environment.persistence."/nix/persist" = {
     hideMounts = true;
     files = [ "/etc/machine-id" ];
 
@@ -9,7 +9,7 @@
       "/etc/ssh"
       "/nix/var/nix"
       "/root"
-      { directory = "/home/mado"; user = "mado"; group = "mado"; mode = "0700"; }
+      "/srv"
       { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "0755"; }
       "/var/lib/bluetooth"
       "/var/lib/libvirt"

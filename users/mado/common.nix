@@ -11,7 +11,7 @@
   ];
 
   home = {
-    persistence."/persistent/home/mado" = {
+    persistence."/nix/persist/home/mado" = {
       directories = [
         "Documents"
         "Downloads"
