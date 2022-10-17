@@ -9,7 +9,7 @@
     ./modules/other/gamemode.nix
     ./modules/other/gdm.nix
     ./modules/other/gnome.nix
-    ./modules/other/libvirtd.nix
+    # ./modules/other/libvirtd.nix
     ./modules/other/pipewire.nix
     ./modules/other/openssh.nix
     ./modules/other/waydroid.nix
