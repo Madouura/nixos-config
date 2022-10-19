@@ -34,6 +34,7 @@
         ".cache/gnome-control-center-goa-helper"
         ".cache/gnome-desktop-thumbnailer"
         ".cache/gstreamer-1.0"
+        ".cache/libgweather"
         ".cache/mesa_shader_cache"
         ".cache/mozilla"
         ".cache/qtshadercache-x86_64-little_endian-lp64"
