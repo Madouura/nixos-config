@@ -95,8 +95,6 @@
         ".config/monitors.xml"
         ".config/user-dirs.dirs"
         ".config/user-dirs.locale"
-
-        ".local/share/recently-used.xbel"
       ];
     };
 
