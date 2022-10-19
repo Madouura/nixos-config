@@ -1,3 +1,0 @@
-{
-  mado = import ./mado;
-}

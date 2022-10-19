@@ -1,0 +1,3 @@
+{
+  programs.ion.enable = true;
+}

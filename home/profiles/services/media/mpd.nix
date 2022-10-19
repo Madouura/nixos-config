@@ -1,0 +1,3 @@
+{
+  services.mpd.enable = true;
+}

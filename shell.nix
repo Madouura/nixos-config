@@ -1,5 +1,12 @@
 { pkgs ? import <nixpkgs> { } }:
 
 pkgs.mkShell {
-  nativeBuildInputs = [ pkgs.gnumake ];
+  NIX_CONFIG = "extra-experimental-features = nix-command flakes";
+
+  nativeBuildInputs = with pkgs; [
+    git
+    gnupg
+    age
+    gnumake
+  ];
 }

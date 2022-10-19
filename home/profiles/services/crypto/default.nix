@@ -1,0 +1,3 @@
+{
+  imports = [ ./gpg-agent.nix ];
+}

@@ -4,9 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+    nix-user-repository.url = "github:nix-community/NUR";
 
-    nixos-hardware = {
-      url = "github:nixos/nixos-hardware";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -15,24 +17,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence = {
-      url = "github:nix-community/impermanence";
+    homeage = {
+      url = "github:jordanisaacs/homeage";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    utils = {
-      url = "github:gytis-ivaskevicius/flake-utils-plus";
-      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
@@ -41,64 +28,49 @@
     nixpkgs,
     nixpkgs-unstable,
     nixos-hardware,
-    home-manager,
-    impermanence,
+    nix-user-repository,
     agenix,
-    flake-utils,
-    utils
-  } @inputs: {
+    home-manager,
+    homeage
+  } @inputs: let
+    supportedSystems = [ "x86_64-linux" ];
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    shellPackages = forAllSystems ( system: import nixpkgs { inherit system; } );
+  in {
+    devShell = forAllSystems ( system: import ./shell.nix { pkgs = shellPackages.${ system }; } );
+
     nixosConfigurations = {
+      # Desktop
       ura = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
-        modules = [
-          (import ./hosts/ura/configuration.nix)
-          utils.nixosModules.autoGenFromInputs
-          home-manager.nixosModules.home-manager
-          agenix.nixosModules.age
-          impermanence.nixosModule
-
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users = import ./users;
-
-              extraSpecialArgs = {
-                inherit inputs;
-                desktop = true;
-              };
-            };
-          }
-        ];
-
+        # modules = [ ./hosts/machines/ura ];
+        modules = [ ./hosts/machines/ura home-manager.nixosModules.home-manager
+{ home-manager = {
+useGlobalPkgs = true; useUserPackages = true; users.mado = import ./home/machines/ura/mado.nix; extraSpecialArgs = { inherit inputs; }; 
+}; } ];
         specialArgs = { inherit inputs; };
       };
 
+      # Laptop
       tsuki = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        modules = [ /hosts/machines/tsuki ];
+        specialArgs = { inherit inputs; };
+      };
+    };
 
-        modules = [
-          (import ./hosts/tsuki/configuration.nix)
-          utils.nixosModules.autoGenFromInputs
-          home-manager.nixosModules.home-manager
-          agenix.nixosModules.age
-          impermanence.nixosModule
+    homeConfigurations = {
+      # Desktop
+      "mado@ura" = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        modules = [ ./home/machines/ura/mado.nix ];
+        specialArgs = { inherit inputs; };
+      };
 
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users = import ./users;
-
-              extraSpecialArgs = {
-                inherit inputs;
-                desktop = false;
-              };
-            };
-          }
-        ];
-
+      # Laptop
+      "mado@tsuki" = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        modules = [ ./home/machines/tsuki/mado.nix ];
         specialArgs = { inherit inputs; };
       };
     };

@@ -1,0 +1,34 @@
+{ inputs, pkgs, ... }: {
+  imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+
+    ./hardware-configuration.nix
+    ./modules
+
+    "${inputs.self}/hosts/profiles/system"
+    "${inputs.self}/hosts/profiles/users/mado.nix"
+
+    "${inputs.self}/overlays/linux.nix"
+    "${inputs.self}/overlays/monero.nix"
+    "${inputs.self}/overlays/virtiofsd.nix"
+    "${inputs.self}/overlays/waydroid.nix"
+  ];
+
+  system.stateVersion = "22.05";
+
+  environment.systemPackages = with pkgs; [
+    lm_sensors
+    pciutils
+    usbutils
+    htop
+    nload
+    ebtables
+    dnsmasq
+    screen
+    inputs.agenix.defaultPackage.x86_64-linux
+  ];
+}
