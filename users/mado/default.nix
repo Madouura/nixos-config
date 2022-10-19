@@ -20,6 +20,8 @@
     homeDirectory = "/home/mado";
 
     persistence."/persist/home/mado" = {
+      files = [ ".bash_history" ];
+
       directories = [
         ".gnupg"
         ".p2pool"

@@ -90,7 +90,6 @@
       ];
 
       files = [
-        ".config/dconf/user"
         ".config/gnome-initial-setup-done"
         ".config/mimeapps.list"
         ".config/monitors.xml"
