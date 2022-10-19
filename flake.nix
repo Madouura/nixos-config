@@ -4,16 +4,31 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    nixos-hardware = {
+      url = "github:nixos/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
-    agenix.url = "github:ryantm/agenix";
-    flake-utils.url = "github:numtide/flake-utils";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";

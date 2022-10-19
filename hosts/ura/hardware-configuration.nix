@@ -14,33 +14,46 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2ac89a94-b93f-4727-99d8-28b7520c8adc";
-      fsType = "ext4";
+    { device = "/dev/mapper/cryptrot1";
+      fsType = "btrfs";
+      options = [ "subvol=root" ];
     };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/4dace9ec-7f59-4d6c-b1b8-ae2ba7ed85fb";
+  boot.initrd.luks.devices."cryptrot1".device = "/dev/disk/by-uuid/5eea1f83-9435-43bd-9645-bd5b4098b240";
+
+  fileSystems."/persist" =
+    { device = "/dev/mapper/cryptrot1";
+      fsType = "btrfs";
+      options = [ "subvol=persist" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/mapper/cryptrot1";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/var/log" =
+    { device = "/dev/mapper/cryptrot1";
+      fsType = "btrfs";
+      options = [ "subvol=log" ];
+    };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/41FD-39A2";
+    { device = "/dev/disk/by-uuid/113C-3E0F";
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/cach" =
-    { device = "/dev/disk/by-uuid/de8b8d17-d13f-4bad-bb21-a92a9f8bcc31";
-      fsType = "ext4";
-    };
-
-  boot.initrd.luks.devices."cryptcach".device = "/dev/disk/by-uuid/18e47211-d45d-4bac-8fce-fcf0ffcba10e";
-
   fileSystems."/mnt/stor" =
-    { device = "/dev/disk/by-uuid/5566bd6d-22f2-4d59-bac4-6cc1dcf788de";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/a3635c02-16f7-4f74-8b32-57cf8897800f";
+      fsType = "btrfs";
+      options = [ "subvol=stor" ];
     };
 
-  boot.initrd.luks.devices."cryptstor".device = "/dev/disk/by-uuid/97501d0c-7164-4238-9b94-291eb6ae78fb";
+  boot.initrd.luks.devices."cryptstor".device = "/dev/disk/by-uuid/04293d69-6e35-499e-ac8c-6dde0edcfb1b";
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a8e45243-e6ae-47a3-b3a8-965c2eb0ed98"; }
+    [ { device = "/dev/disk/by-uuid/007a3d3f-39af-4a0b-b4bb-a08e2bd31a7e"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

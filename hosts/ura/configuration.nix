@@ -7,7 +7,6 @@
     ./modules/other/corectrl.nix
     ./modules/other/fuse.nix
     ./modules/other/gamemode.nix
-    ./modules/other/gdm.nix
     ./modules/other/gnome.nix
     # ./modules/other/libvirtd.nix
     ./modules/other/pipewire.nix

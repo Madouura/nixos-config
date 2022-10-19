@@ -1,28 +1,46 @@
 {
   boot = {
-    resumeDevice = "/dev/disk/by-uuid/a8e45243-e6ae-47a3-b3a8-965c2eb0ed98";
-    supportedFilesystems = [ "bcachefs" ];
+    supportedFilesystems = [ "btrfs" ];
+    resumeDevice = "/dev/disk/by-uuid/007a3d3f-39af-4a0b-b4bb-a08e2bd31a7e";
 
     initrd = {
-      supportedFilesystems = [ "bcachefs" ];
-      luks.devices."cryptswap".device = "/dev/disk/by-uuid/1acd8b73-20f1-4697-915a-b931e5b0b0a1";
+      supportedFilesystems = [ "btrfs" ];
+      luks.devices."cryptswap".device = "/dev/disk/by-uuid/00aabdaf-fd9e-440d-a3d2-dc6d52329518";
+      luks.devices."cryptrot2".device = "/dev/disk/by-uuid/0a15ea35-adc1-4d84-9ef4-b07a15048ebe";
     };
   };
 
   fileSystems = {
-    "/".options = [ "discard" ];
     "/boot".options = [ "discard" ];
+    "/mnt/stor".options = [ "compress=zstd" ];
+    "/etc/ssh".neededForBoot = true;
 
-    "/home/mado/.virtiofs/Music" = {
-      device = "/home/mado/Music";
-      fsType = "none";
-      options = [ "ro" "bind" ];
+    "/".options = [
+      "discard=async"
+      "compress=zstd"
+    ];
+
+    "/nix".options = [
+      "discard=async"
+      "compress=zstd"
+    ];
+
+    "/persist" = {
+      neededForBoot = true;
+
+      options = [
+        "discard=async"
+        "compress=zstd"
+      ];
     };
 
-    "/home/mado/.virtiofs/Games" = {
-      device = "/home/mado/Games";
-      fsType = "none";
-      options = [ "rw" "bind" ];
+    "/var/log" = {
+      neededForBoot = true;
+
+      options = [
+        "discard=async"
+        "compress=zstd"
+      ];
     };
   };
 }

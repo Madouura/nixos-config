@@ -19,6 +19,6 @@
         experimental-features = nix-command flakes
         flake-registry = ${empty_registry}
         builders-use-substitutes = true
-      '';
+    '';
   };
 }

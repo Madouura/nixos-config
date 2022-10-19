@@ -3,6 +3,6 @@
     enable = true;
     passwordAuthentication = false;
     permitRootLogin = "no";
-    ports = [ 13372 ];
+    ports = [ 19972 ];
   };
 }

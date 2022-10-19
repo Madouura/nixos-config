@@ -11,7 +11,7 @@
   ];
 
   home = {
-    persistence."/nix/persist/home/mado" = {
+    persistence."/persist/home/mado" = {
       directories = [
         "Documents"
         "Downloads"
@@ -25,16 +25,19 @@
         ".steam"
         ".vscode-oss"
 
+        ".cache/epiphany"
+        ".cache/evolution"
         ".cache/geary"
-        ".cache/mesa-shader-cache"
+        ".cache/mesa_shader_cache"
         ".cache/mozilla"
         ".cache/thumbnails"
+        ".cache/tracker3"
 
-        ".config/monitors.xml"
         ".config/autostart"
         ".config/corectrl"
         ".config/discord"
         ".config/easyeffects"
+        ".config/evolution"
         ".config/geary"
         ".config/GIMP"
         ".config/goverlay"
@@ -48,14 +51,22 @@
         ".config/VSCodium"
 
         ".local/share/applications"
+        ".local/share/epiphany"
+        ".local/share/evolution"
         ".local/share/geary"
         ".local/share/gnome-shell"
         ".local/share/icons"
         ".local/share/mpd"
+        ".local/share/nautilus"
         ".local/share/qBittorrent"
         ".local/share/Steam"
         ".local/share/Terraria"
         ".local/share/Thrive"
+      ];
+
+      files = [
+        ".config/gnome-initial-setup-done"
+        ".config/monitors.xml"
       ];
     };
 

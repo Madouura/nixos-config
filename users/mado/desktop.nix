@@ -4,7 +4,7 @@
   imports = [ ./common.nix ];
 
   home = {
-    persistence."/nix/persist/home/mado" = {
+    persistence."/persist/home/mado" = {
       allowOther = true;
 
       directories = [

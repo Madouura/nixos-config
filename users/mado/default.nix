@@ -6,6 +6,7 @@
     "${inputs.impermanence}/home-manager.nix"
     ./modules/bash.nix
     ./modules/git.nix
+    ./modules/gpg.nix
     ./modules/mining.nix
     ./modules/nix-direnv.nix
   ] ++ lib.optional (desktop) ./desktop.nix
@@ -17,18 +18,13 @@
     username = "mado";
     homeDirectory = "/home/mado";
 
-    persistence."/nix/persist/home/mado" = {
+    persistence."/persist/home/mado" = {
       directories = [
         { directory = ".gnupg"; } # mode = "0700"; }
         ".p2pool"
         { directory = ".ssh"; } # mode = "0700"; }
-        "./local/share/direnv"
+        ".local/share/direnv"
         { directory = ".local/share/keyrings"; } # mode = "0700"; }
-      ];
-
-      files = [
-        ".bash_history"
-        ".nix-channels"
       ];
     };
 

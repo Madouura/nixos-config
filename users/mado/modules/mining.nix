@@ -3,7 +3,7 @@
 {
   home.file."mining.sh" = {
     executable = true;
-    target = "$HOME/.local/bin/mining.sh";
+    target = "/home/mado/.local/bin/mining.sh";
 
     text = ''
       # Workaround
