@@ -5,6 +5,7 @@
   imports = [
     "${inputs.impermanence}/home-manager.nix"
     ./modules/bash.nix
+    ./modules/fs-diff.nix
     ./modules/git.nix
     ./modules/gpg.nix
     ./modules/mining.nix
@@ -20,11 +21,11 @@
 
     persistence."/persist/home/mado" = {
       directories = [
-        { directory = ".gnupg"; } # mode = "0700"; }
+        ".gnupg"
         ".p2pool"
-        { directory = ".ssh"; } # mode = "0700"; }
+        ".ssh"
         ".local/share/direnv"
-        { directory = ".local/share/keyrings"; } # mode = "0700"; }
+        ".local/share/keyrings"
       ];
     };
 

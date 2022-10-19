@@ -6,6 +6,7 @@
     target = "/home/mado/.local/bin/mining.sh";
 
     text = ''
+      #!/usr/bin/env bash
       # Workaround
       export monero_pubaddr=${ osConfig.age.secrets.monero_pubaddr.path }
       cd /home/mado/.p2pool
