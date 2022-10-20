@@ -10,7 +10,10 @@ ifndef HOSTNAME
 	$(error Hostname unknown)
 endif
 
-home-manager:
+gc:
+	nix-collect-garbage -d
+
+hm:
 	home-manager switch --flake .#${USER}@${HOSTNAME}
 
 switch:
@@ -31,4 +34,4 @@ update:
 upgrade:
 	make update
 	make switch
-	make home-manager
+	make hm
