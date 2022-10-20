@@ -61,21 +61,6 @@
         "type": "github"
       }
     },
-    "nix-user-repository": {
-      "locked": {
-        "lastModified": 1666216478,
-        "narHash": "sha256-osGgetmIdajR7Gr1pNWLTIStZRxKQOiZNgUaMJFFCiw=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "23a93790851a14d2b671ba14a204b6fa39931877",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1665987993,
@@ -128,7 +113,6 @@
         "agenix": "agenix",
         "home-manager": "home-manager",
         "homeage": "homeage",
-        "nix-user-repository": "nix-user-repository",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"

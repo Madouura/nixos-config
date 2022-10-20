@@ -2,19 +2,17 @@
   imports = [
     inputs.homeage.homeManagerModules.homeage
 
-    ${inputs.self}/home/profiles
+    "${inputs.self}/home/profiles"
 
-    ${inputs.self}/overlays/discord.nix
-    ${inputs.self}/overlays/gamescope.nix
-    ${inputs.self}/overlays/ledger-live-desktop.nix
-    ${inputs.self}/overlays/monero-cli.nix
-    ${inputs.self}/overlays/monero-gui.nix
-    ${inputs.self}/overlays/p2pool.nix
-    ${inputs.self}/overlays/protonup.nix
-    ${inputs.self}/overlays/xmrig.nix
+    "${inputs.self}/overlays/discord.nix"
+    "${inputs.self}/overlays/gamescope.nix"
+    "${inputs.self}/overlays/ledger-live-desktop.nix"
+    "${inputs.self}/overlays/monero-cli.nix"
+    "${inputs.self}/overlays/monero-gui.nix"
+    "${inputs.self}/overlays/p2pool.nix"
+    "${inputs.self}/overlays/protonup.nix"
+    "${inputs.self}/overlays/xmrig.nix"
   ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   home = {
     enableNixpkgsReleaseCheck = true;
@@ -30,7 +28,7 @@
 
     packages = with pkgs; [
       # Utilities #
-      gamescope           # Micro-compositor for Steam
+      # gamescope           # Micro-compositor for Steam
       protonup            # Update proton GE
       gnome.gnome-tweaks  # Extended GNOME settings
 
@@ -51,6 +49,11 @@
       p2pool              # Decentralized monero mining pool
       xmrig               # The actual miner
     ];
+  };
+
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   ##            Homeage stuff here           ##

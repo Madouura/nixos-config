@@ -20,11 +20,5 @@
       group = "gdm";
       mode = "440";
     };
-
-    monero_pubaddr = {
-      file = "${inputs.self}/secrets/monero_pubaddr.age";
-      group = "wheel";
-      mode = "440";
-    };
   };
 }

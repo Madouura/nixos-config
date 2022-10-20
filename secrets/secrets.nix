@@ -8,6 +8,5 @@ let
 in {
   "avatar.png.age".publicKeys = allSystems;
   "gdm.age".publicKeys = allSystems;
-  "monero_pubaddr.age".publicKeys = allSystems;
   "ura_monitors.xml.age".publicKeys = [ systems.ura ];
 }

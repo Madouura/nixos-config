@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nix-user-repository.url = "github:nix-community/NUR";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -28,7 +27,6 @@
     nixpkgs,
     nixpkgs-unstable,
     nixos-hardware,
-    nix-user-repository,
     agenix,
     home-manager,
     homeage
@@ -43,35 +41,44 @@
       # Desktop
       ura = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        # modules = [ ./hosts/machines/ura ];
-        modules = [ ./hosts/machines/ura home-manager.nixosModules.home-manager
-{ home-manager = {
-useGlobalPkgs = true; useUserPackages = true; users.mado = import ./home/machines/ura/mado.nix; extraSpecialArgs = { inherit inputs; }; 
-}; } ];
+        modules = [ ./hosts/machines/ura ];
         specialArgs = { inherit inputs; };
       };
 
       # Laptop
       tsuki = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ /hosts/machines/tsuki ];
+        modules = [ ./hosts/machines/tsuki ];
         specialArgs = { inherit inputs; };
       };
     };
 
-    homeConfigurations = {
+    # 22.11
+    # https://git.sr.ht/~misterio/nix-config/tree/main/item/flake.nix
+    homeConfigurations = let
+      system = "x86_64-linux";
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in {
       # Desktop
       "mado@ura" = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        modules = [ ./home/machines/ura/mado.nix ];
-        specialArgs = { inherit inputs; };
+        inherit system pkgs;
+        stateVersion = "22.05";
+        username = "mado";
+        homeDirectory = "/home/mado";
+        configuration = import ./home/machines/ura/mado.nix { inherit pkgs inputs; };
       };
 
       # Laptop
       "mado@tsuki" = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        modules = [ ./home/machines/tsuki/mado.nix ];
-        specialArgs = { inherit inputs; };
+        inherit system pkgs;
+        stateVersion = "22.05";
+        username = "mado";
+        homeDirectory = "/home/mado";
+        configuration = import ./home/machines/tsuki/mado.nix { inherit pkgs inputs; };
       };
     };
   };

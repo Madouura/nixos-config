@@ -69,8 +69,14 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  ##            Homeage stuff here           ##
-  ## https://github.com/jordanisaacs/homeage ##
+  homeage = {
+    identityPaths = [ "/home/mado/.ssh/id_ed25519" ];
+    installationType = "systemd";
+
+    file."monero_pubaddr" = {
+      source = "${inputs.self}/secrets/monero_pubaddr.age";
+    };
+  };
 
   programs = {
     bash.historyFile = "/home/mado/.bash_history";
