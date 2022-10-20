@@ -15,7 +15,6 @@ home-manager:
 
 switch:
 	nixos-rebuild switch --use-remote-sudo --flake .#${HOSTNAME} -L
-	make home-manager
 
 boot:
 	nixos-rebuild boot --use-remote-sudo --flake .#${HOSTNAME} -L
@@ -32,3 +31,4 @@ update:
 upgrade:
 	make update
 	make switch
+	make home-manager
