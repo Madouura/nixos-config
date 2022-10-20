@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, pkgs-unstable, ... }: {
   imports = [
     inputs.homeage.homeManagerModules.homeage
 
@@ -27,9 +27,10 @@
       "fs-diff.sh".target = "/home/mado/.local/bin/fs-diff.sh";
     };
 
+    # Figure out overlay issue
     packages = with pkgs; [
       # Utilities #
-      # gamescope           # Micro-compositor for Steam
+      pkgs-unstable.gamescope           # Micro-compositor for Steam
       protonup            # Update proton GE
       gnome.gnome-tweaks  # Extended GNOME settings
 
@@ -37,7 +38,7 @@
       libreoffice         # It's like MS Office, but free
 
       # Internet #
-      discord             # Cancer
+      pkgs-unstable.discord             # Cancer
       qbittorrent         # Torrent client
       chiaki              # PS4/5 remote play
 
@@ -56,26 +57,23 @@
       virtmanager         # Manage virtual machines
 
       # Crypto #
-      ledger-live-desktop # Official Ledger hardware wallet client
-      monero-cli          # Official Monero client (CLI)
-      monero-gui          # Official Monero client (GUI)
-      p2pool              # Decentralized monero mining pool
-      xmrig               # The actual miner
+      pkgs-unstable.ledger-live-desktop # Official Ledger hardware wallet client
+      pkgs-unstable.monero-cli          # Official Monero client (CLI)
+      pkgs-unstable.monero-gui          # Official Monero client (GUI)
+      pkgs-unstable.p2pool              # Decentralized monero mining pool
+      pkgs-unstable.xmrig               # The actual miner
     ];
-  };
-
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   homeage = {
     identityPaths = [ "/home/mado/.ssh/id_ed25519" ];
     installationType = "systemd";
+    file."monero_pubaddr".source = "${inputs.self}/secrets/monero_pubaddr.age";
+  };
 
-    file."monero_pubaddr" = {
-      source = "${inputs.self}/secrets/monero_pubaddr.age";
-    };
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   programs = {

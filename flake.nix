@@ -62,6 +62,11 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in {
       # Desktop
       "mado@ura" = home-manager.lib.homeManagerConfiguration {
@@ -69,7 +74,7 @@
         stateVersion = "22.05";
         username = "mado";
         homeDirectory = "/home/mado";
-        configuration = import ./home/machines/ura/mado.nix { inherit pkgs inputs; };
+        configuration = import ./home/machines/ura/mado.nix { inherit inputs pkgs pkgs-unstable; };
       };
 
       # Laptop
@@ -78,7 +83,7 @@
         stateVersion = "22.05";
         username = "mado";
         homeDirectory = "/home/mado";
-        configuration = import ./home/machines/tsuki/mado.nix { inherit pkgs inputs; };
+        configuration = import ./home/machines/tsuki/mado.nix { inherit inputs pkgs pkgs-unstable; };
       };
     };
   };
