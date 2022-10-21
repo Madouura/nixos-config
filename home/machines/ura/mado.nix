@@ -20,6 +20,7 @@
     stateVersion = "22.11";
     username = "mado";
     homeDirectory = "/home/mado";
+    sessionPath = [ "/home/mado/.local/bin" ];
     sessionVariables = { EDITOR = "nano"; };
 
     file = {
@@ -66,8 +67,7 @@
   };
 
   homeage = {
-    identityPaths = [ "/home/mado/.ssh/id_ed25519" ];
-    installationType = "systemd";
+    identityPaths = [ "/home/mado/.ssh/home_ed25519" ];
     file."monero_pubaddr".source = "${inputs.self}/secrets/monero_pubaddr.age";
   };
 
