@@ -10,8 +10,14 @@ ifndef HOSTNAME
 	$(error Hostname unknown)
 endif
 
-gc:
+home-gc:
 	nix-collect-garbage -d
+
+system-gc:
+	sudo nix-collect-garbage -d
+
+gc:
+	make system-gc
 
 hm:
 	home-manager switch --flake .#${USER}@${HOSTNAME}
