@@ -4,6 +4,7 @@
 
     text = ''
       #!${ pkgs.runtimeShell }
+      mkdir -p ~/.p2pool
       cd ~/.p2pool
       screen -dmS mining
       screen -X exec p2pool --mini --wallet $(cat ${ config.homeage.file."monero_pubaddr".path })
