@@ -1,4 +1,4 @@
-{ inputs, pkgs, pkgs-unstable, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.homeage.homeManagerModules.homeage
 
@@ -17,7 +17,7 @@
 
   home = {
     enableNixpkgsReleaseCheck = true;
-    stateVersion = "22.05";
+    stateVersion = "22.11";
     username = "mado";
     homeDirectory = "/home/mado";
     sessionVariables = { EDITOR = "nano"; };
@@ -30,7 +30,7 @@
     # Figure out overlay issue
     packages = with pkgs; [
       # Utilities #
-      pkgs-unstable.gamescope           # Micro-compositor for Steam
+      gamescope           # Micro-compositor for Steam
       protonup            # Update proton GE
       gnome.gnome-tweaks  # Extended GNOME settings
 
@@ -38,7 +38,7 @@
       libreoffice         # It's like MS Office, but free
 
       # Internet #
-      pkgs-unstable.discord             # Cancer
+      discord             # Cancer
       qbittorrent         # Torrent client
       chiaki              # PS4/5 remote play
 
@@ -57,11 +57,11 @@
       virtmanager         # Manage virtual machines
 
       # Crypto #
-      pkgs-unstable.ledger-live-desktop # Official Ledger hardware wallet client
-      pkgs-unstable.monero-cli          # Official Monero client (CLI)
-      pkgs-unstable.monero-gui          # Official Monero client (GUI)
-      pkgs-unstable.p2pool              # Decentralized monero mining pool
-      pkgs-unstable.xmrig               # The actual miner
+      ledger-live-desktop # Official Ledger hardware wallet client
+      monero-cli          # Official Monero client (CLI)
+      monero-gui          # Official Monero client (GUI)
+      p2pool              # Decentralized monero mining pool
+      xmrig               # The actual miner
     ];
   };
 

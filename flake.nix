@@ -2,8 +2,10 @@
   description = "Madouura's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Change to stable once 22.11 is out.
+    # nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     agenix = {
@@ -12,7 +14,8 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      # url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +28,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
+    # nixpkgs-unstable,
     nixos-hardware,
     agenix,
     home-manager,
@@ -33,57 +36,56 @@
   } @inputs: let
     supportedSystems = [ "x86_64-linux" ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    shellPackages = forAllSystems ( system: import nixpkgs { inherit system; } );
+
+    nixpkgsFor = forAllSystems (system: import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    } );
   in {
-    devShell = forAllSystems ( system: import ./shell.nix { pkgs = shellPackages.${ system }; } );
+    devShells = forAllSystems ( system: let
+      pkgs = nixpkgsFor.${ system };
+    in {
+      default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          age
+          git
+          gnumake
+          gnupg
+        ];
+      };
+    } );
 
     nixosConfigurations = {
       # Desktop
       ura = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "x86_64-linux"; # remove
+        pkgs = nixpkgsFor.x86_64-linux;
         modules = [ ./hosts/machines/ura ];
         specialArgs = { inherit inputs; };
       };
 
       # Laptop
       tsuki = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "x86_64-linux"; # remove
+        pkgs = nixpkgsFor.x86_64-linux;
         modules = [ ./hosts/machines/tsuki ];
         specialArgs = { inherit inputs; };
       };
     };
 
-    # 22.11
-    # https://git.sr.ht/~misterio/nix-config/tree/main/item/flake.nix
-    homeConfigurations = let
-      system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in {
+    homeConfigurations = {
       # Desktop
       "mado@ura" = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        stateVersion = "22.05";
-        username = "mado";
-        homeDirectory = "/home/mado";
-        configuration = import ./home/machines/ura/mado.nix { inherit inputs pkgs pkgs-unstable; };
+        pkgs = nixpkgsFor.x86_64-linux;
+        modules = [ ./home/machines/ura/mado.nix ];
+        extraSpecialArgs = { inherit inputs; };
       };
 
       # Laptop
       "mado@tsuki" = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        stateVersion = "22.05";
-        username = "mado";
-        homeDirectory = "/home/mado";
-        configuration = import ./home/machines/tsuki/mado.nix { inherit inputs pkgs pkgs-unstable; };
+        pkgs = nixpkgsFor.x86_64-linux;
+        modules = [ ./home/machines/tsuki/mado.nix ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
   };

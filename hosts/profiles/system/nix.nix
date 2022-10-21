@@ -2,13 +2,19 @@
   # system.copySystemConfiguration = true;
 
   nix = {
-    autoOptimiseStore = true;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings = {
+      auto-optimise-store = true;
 
-    trustedUsers = [
-      "root"
-      "@wheel"
-    ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+    };
 
     gc = {
       automatic = true;

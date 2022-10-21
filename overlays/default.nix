@@ -9,7 +9,6 @@
     ./monero-gui.nix
     ./monero.nix
     ./p2pool.nix
-    ./protonup.nix
     ./rpcs3.nix
     ./virtiofsd.nix
     ./waydroid.nix

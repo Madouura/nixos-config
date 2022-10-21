@@ -5,13 +5,13 @@
 
     firewall = {
       allowedTCPPortRanges = [
-        { from = 13370; to = 13379; }
-        { from = 13380; to = 13389; }
+        { from = 13370; to = 13379; } # Standard
+        { from = 13380; to = 13389; } # Windows VM
       ];
 
       allowedUDPPortRanges = [
-        { from = 13370; to = 13379; }
-        { from = 13380; to = 13389; }
+        { from = 13370; to = 13379; } # Standard
+        { from = 13380; to = 13389; } # Windows VM
       ];
     };
 
