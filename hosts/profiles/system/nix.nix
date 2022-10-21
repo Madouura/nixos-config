@@ -31,6 +31,6 @@
   environment.etc = {
     "nix/path/nixpkgs".source = inputs.nixpkgs;
     "nix/path/home-manager".source = inputs.home-manager;
-    "nix/path/activeconfig".source = inputs.self;
+    "nix/path/active-config".source = inputs.self;
   };
 }
