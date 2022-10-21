@@ -5,7 +5,7 @@
     ./gnome.nix
     # ./libvirtd.nix
     ./openssh.nix
-    ./pipewire.nix
+    # ./pipewire.nix
     ./waydroid.nix
   ];
 }
