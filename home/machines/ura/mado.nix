@@ -15,6 +15,8 @@
     # "${inputs.self}/overlays/xmrig.nix"
   ];
 
+  systemd.user.startServices = "sd-switch";
+
   home = {
     enableNixpkgsReleaseCheck = true;
     stateVersion = "22.11";
