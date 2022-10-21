@@ -27,7 +27,7 @@
       "fs-diff.sh".target = "/home/mado/.local/bin/fs-diff.sh";
     };
 
-    # Figure out overlay issue
+    # TODO: Figure out overlay issue (Does this apply in 22.11?)
     packages = with pkgs; [
       # Utilities #
       gamescope           # Micro-compositor for Steam

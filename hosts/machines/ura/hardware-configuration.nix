@@ -33,6 +33,11 @@
       options = [ "subvol=home" ];
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/53A4-9DFD";
+      fsType = "vfat";
+    };
+
   fileSystems."/mnt/stor" =
     { device = "/dev/disk/by-uuid/8387acb7-5e0a-4359-babd-fa7a942e6f58";
       fsType = "btrfs";
@@ -40,11 +45,6 @@
     };
 
   boot.initrd.luks.devices."cryptstor".device = "/dev/disk/by-uuid/ee5737d8-61e1-42b6-92d7-be575f99e1e7";
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/53A4-9DFD";
-      fsType = "vfat";
-    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/909f3c62-12f5-4220-b224-facd2a6ce364"; }
@@ -59,6 +59,7 @@
   # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp7s0.useDHCP = lib.mkDefault true;
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;

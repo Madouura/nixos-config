@@ -58,7 +58,6 @@
     nixosConfigurations = {
       # Desktop
       ura = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"; # remove
         pkgs = nixpkgsFor.x86_64-linux;
         modules = [ ./hosts/machines/ura ];
         specialArgs = { inherit inputs; };
@@ -66,7 +65,6 @@
 
       # Laptop
       tsuki = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"; # remove
         pkgs = nixpkgsFor.x86_64-linux;
         modules = [ ./hosts/machines/tsuki ];
         specialArgs = { inherit inputs; };
