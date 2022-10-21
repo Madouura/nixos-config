@@ -1,6 +1,7 @@
 {
   imports = [
     ./corectrl.nix
+    ./dconf.nix
     ./fonts.nix
     ./gamemode.nix
     ./gnome.nix

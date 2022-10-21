@@ -1,4 +1,5 @@
 {
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
 
   environment.etc = {
@@ -25,10 +26,11 @@
     config = {
       pipewire = {
         "context.properties" = {
-          "link.max-buffers" = 16;
+          "link.max-buffers" = 64;
           "log.level" = 2;
-          "default.clock.min-quantum" = 32;
-          "default.clock.max-quantum" = 1024;
+          "default.clock.quantum" = 256;
+          "default.clock.min-quantum" = 256;
+          "default.clock.max-quantum" = 256;
           "core.daemon" = true;
           "core.name" = "pipewire-0";
         };
@@ -68,46 +70,12 @@
           { name = "libpipewire-module-link-factory"; }
           { name = "libpipewire-module-session-manager"; }
         ];
-
-        "context.objects" = [
-          {
-            factory = "spa-node-factory";
-
-            args = {
-              "factory.name" = "support.node.driver";
-              "node.name" = "Dummy-Driver";
-              "priority.driver" = 8000;
-            };
-          }
-
-          {
-            factory = "adapter";
-
-            args = {
-              "factory.name" = "support.null-audio-sink";
-              "node.name" = "Microphone-Proxy";
-              "node.description" = "Microphone";
-              "media.class" = "Audio/Source/Virtual";
-              "audio.position" = "MONO";
-            };
-          }
-
-          {
-            factory = "adapter";
-
-            args = {
-              "factory.name" = "support.null-audio-sink";
-              "node.name" = "Main-Output-Proxy";
-              "node.description" = "Main Output";
-              "media.class" = "Audio/Sink";
-              "audio.position" = "FL,FR";
-            };
-          }
-        ];
       };
 
       pipewire-pulse = {
-        "context.properties" = { "log.level" = 2; };
+        "context.properties" = {
+          "log.level" = 2;
+        };
 
         "context.modules" = [
           {
@@ -126,14 +94,6 @@
           { name = "libpipewire-module-client-node"; }
           { name = "libpipewire-module-adapter"; }
           { name = "libpipewire-module-metadata"; }
-
-          {
-            name = "libpipewire-module-protocol-pulse";
-
-            args = {
-              "server.address" = [ "unix:native" ];
-            };
-          }
         ];
 
         "stream.properties" = {

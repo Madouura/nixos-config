@@ -1,4 +1,6 @@
 {
+  # system.copySystemConfiguration = true;
+
   nix = {
     autoOptimiseStore = true;
     settings.experimental-features = [ "nix-command" "flakes" ];

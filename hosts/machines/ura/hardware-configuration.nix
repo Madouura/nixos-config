@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/mapper/cryptrot1";
+    { device = "/dev/disk/by-uuid/5f2a4217-4ff7-462c-a3e9-70601ef87358";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
@@ -22,13 +22,13 @@
   boot.initrd.luks.devices."cryptrot1".device = "/dev/disk/by-uuid/07cf353c-aff3-4663-b7c6-c83355377092";
 
   fileSystems."/nix" =
-    { device = "/dev/mapper/cryptrot1";
+    { device = "/dev/disk/by-uuid/5f2a4217-4ff7-462c-a3e9-70601ef87358";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/mapper/cryptrot1";
+    { device = "/dev/disk/by-uuid/5f2a4217-4ff7-462c-a3e9-70601ef87358";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };

@@ -1,6 +1,3 @@
 {
-  services.easyeffects = {
-    enable = true; # programs.dconf.enable = true;
-    # preset = "";
-  };
+  services.easyeffects.enable = true;
 }
