@@ -1,3 +1,7 @@
 { pkgs, ... }: {
-  fonts.fonts = with pkgs; [ ipafont baekmuk-ttf ];
+  fonts.fonts = with pkgs; [
+    ipafont
+    baekmuk-ttf
+    nerdfonts
+  ];
 }
