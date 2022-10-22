@@ -11,12 +11,13 @@ ifndef HOSTNAME
 endif
 
 home-gc:
-	nix-collect-garbage -d
+	home-manager expire-generations "-1 second"
 
 system-gc:
 	sudo nix-collect-garbage -d
 
 gc:
+	make home-gc
 	make system-gc
 
 hm:
