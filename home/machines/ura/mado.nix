@@ -29,6 +29,7 @@
     file = {
       "mining.sh".target = "/home/mado/.local/bin/mining.sh";
       "fs-diff.sh".target = "/home/mado/.local/bin/fs-diff.sh";
+      "sd-webui.sh".target = "/home/mado/.local/bin/sd-webui.sh";
     };
 
     # TODO: Figure out overlay issue (Does this apply in 22.11?)
