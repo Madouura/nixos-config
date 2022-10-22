@@ -8,6 +8,7 @@
     ./networking.nix
     ./packages.nix
     ./security.nix
+    ./systemd.nix
     ./time.nix
     ./users.nix
   ];
