@@ -5,7 +5,6 @@
     usbutils
     htop
     nload
-    ebtables
     dnsmasq
     screen
     inputs.agenix.defaultPackage.x86_64-linux
