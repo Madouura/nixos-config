@@ -24,6 +24,7 @@
     homeDirectory = "/home/mado";
     sessionPath = [ "/home/mado/.local/bin" ];
     sessionVariables = { EDITOR = "nano"; };
+    shellAliases = { ls = "ls --color"; };
 
     file = {
       "mining.sh".target = "/home/mado/.local/bin/mining.sh";
@@ -80,6 +81,7 @@
 
   programs = {
     bash.historyFile = "/home/mado/.bash_history";
+    zsh.history.path = "/home/mado/.zsh_history";
     mpv.config.screenshot-directory = "/home/mado/Pictures/Screenshots/mpv";
 
     git = {

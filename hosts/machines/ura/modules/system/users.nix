@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   users.users.mado = {
-    shell = pkgs.ion;
+    shell = pkgs.zsh;
     extraGroups = [ "kvm" "rtkit" ];
   };
 }

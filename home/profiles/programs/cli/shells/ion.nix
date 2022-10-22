@@ -1,9 +1,3 @@
 {
-  programs.ion = {
-    enable = true;
-
-    shellAliases = {
-      ls = "ls --color";
-    };
-  };
+  programs.ion.enable = true;
 }

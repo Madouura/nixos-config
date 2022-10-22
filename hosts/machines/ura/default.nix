@@ -7,6 +7,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
+
     ./modules
 
     "${inputs.self}/hosts/profiles/system"
