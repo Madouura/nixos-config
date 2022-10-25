@@ -10,7 +10,7 @@
     ./monero.nix
     ./nano.nix
     ./nix.nix
-    # ./pipewire.nix
+    ./pipewire.nix
     ./power-management.nix
     ./printing.nix
     ./steam.nix
