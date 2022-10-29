@@ -77,7 +77,17 @@
 
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+
+      extra-sandbox-paths = [
+        "/dev/kfd"
+        "/sys/devices/virtual/kfd"
+        "/dev/dri/renderD128"
+        "/dev/dri/renderD129"
+      ];
+    };
   };
 
   programs = {

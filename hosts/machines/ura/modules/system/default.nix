@@ -6,6 +6,7 @@
     ./environment.nix
     ./hardware.nix
     ./networking.nix
+    ./nix.nix
     ./packages.nix
     ./security.nix
     ./systemd.nix
