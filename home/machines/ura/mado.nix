@@ -35,38 +35,39 @@
     # TODO: Figure out overlay issue (Does this apply in 22.11?)
     packages = with pkgs; [
       # Utilities #
-      gamescope           # Micro-compositor for Steam
-      protonup            # Update proton GE
-      gnome.gnome-tweaks  # Extended GNOME settings
+      gamescope               # Micro-compositor for Steam
+      protonup                # Update proton GE
+      gnome.gnome-tweaks      # Extended GNOME settings
 
       # Office #
-      libreoffice         # It's like MS Office, but free
+      libreoffice             # It's like MS Office, but free
 
       # Internet #
-      discord             # Cancer
-      qbittorrent         # Torrent client
-      chiaki              # PS4/5 remote play
+      discord                 # Cancer
+      element-desktop         # Maybe less cancer?
+      qbittorrent             # Torrent client
+      chiaki                  # PS4/5 remote play
 
       # Media #
-      gimp                # Meme maker
-      krita               # Art maker
+      gimp                    # Meme maker
+      krita                   # Art maker
 
       # Emulation #
-      yuzu                # Nintendo Switch
-      dolphinEmu          # Nintendo GameCube/Wii
-      ares                # Retro
-      pcsx2               # Sony Playstation 2
-      rpcs3               # Sony Playstation 3
+      yuzu                    # Nintendo Switch
+      dolphinEmu              # Nintendo GameCube/Wii
+      ares                    # Retro
+      pcsx2                   # Sony Playstation 2
+      rpcs3                   # Sony Playstation 3
 
       # Virtualization #
-      virtmanager         # Manage virtual machines
+      virtmanager             # Manage virtual machines
 
       # Crypto #
-      ledger-live-desktop # Official Ledger hardware wallet client
-      monero-cli          # Official Monero client (CLI)
-      monero-gui          # Official Monero client (GUI)
-      p2pool              # Decentralized monero mining pool
-      xmrig               # The actual miner
+      ledger-live-desktop     # Official Ledger hardware wallet client
+      monero-cli              # Official Monero client (CLI)
+      monero-gui              # Official Monero client (GUI)
+      p2pool                  # Decentralized monero mining pool
+      xmrig                   # The actual miner
     ];
   };
 
