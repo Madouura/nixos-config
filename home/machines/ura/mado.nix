@@ -101,10 +101,17 @@
   services.mpd = {
     musicDirectory = "/home/mado/Music";
 
+    #extraConfig = ''
+    #  audio_output {
+    #    type  "pipewire"
+    #    name  "PipeWire Sound Server"
+    #  }
+    #'';
+
     extraConfig = ''
       audio_output {
-        type  "pipewire"
-        name  "PipeWire Sound Server"
+        type "pulse"
+        name "PulseAudio"
       }
     '';
   };
