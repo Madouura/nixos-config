@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
   imports = [
     inputs.homeage.homeManagerModules.homeage
 
@@ -74,6 +74,7 @@
   homeage = {
     identityPaths = [ "/home/mado/.ssh/home_ed25519" ];
     file."monero_pubaddr".source = "${inputs.self}/secrets/monero_pubaddr.age";
+    file."ssh-config-addon".source = "${inputs.self}/secrets/ssh-config-addon.age";
   };
 
   nix = {
@@ -85,6 +86,10 @@
     bash.historyFile = "/home/mado/.bash_history";
     zsh.history.path = "/home/mado/.zsh_history";
     mpv.config.screenshot-directory = "/home/mado/Pictures/Screenshots/mpv";
+
+    ssh.extraConfig = ''
+      Include ${ builtins.replaceStrings [ "$UID" ] [ "1000" ] config.homeage.file."ssh-config-addon".path }
+    '';
 
     git = {
       userName = "Madoura";
