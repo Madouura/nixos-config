@@ -6,6 +6,6 @@
     # ./libvirtd.nix
     ./openssh.nix
     ./pipewire.nix
-    ./waydroid.nix
+    # ./waydroid.nix
   ];
 }
