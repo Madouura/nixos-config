@@ -37,6 +37,8 @@
       # Utilities #
       gamescope               # Micro-compositor for Steam
       protonup                # Update proton GE
+      xdelta
+      gnome.zenity
       gnome.gnome-tweaks      # Extended GNOME settings
 
       # Office #

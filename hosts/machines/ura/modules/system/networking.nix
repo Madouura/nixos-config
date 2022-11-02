@@ -20,5 +20,17 @@
       enp6s0.useDHCP = true;
       wlp7s0.useDHCP = true;
     };
+
+    hosts = {
+      # Genshin Impact bypass for lutris
+      "0.0.0.0" = [
+        "sg-public-data-api.hoyoverse.com"
+        "log-upload-os.hoyoverse.com"
+        "overseauspider.yuanshen.com"
+        "public-data-api.mihoyo.com"
+        "log-upload.mihoyo.com"
+        "uspider.yuanshen.com"
+      ];
+    };
   };
 }
