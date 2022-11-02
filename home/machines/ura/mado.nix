@@ -58,6 +58,7 @@
       ares                    # Retro
       pcsx2                   # Sony Playstation 2
       rpcs3                   # Sony Playstation 3
+      lutris                  # WINE
 
       # Virtualization #
       virtmanager             # Manage virtual machines
