@@ -1,4 +1,3 @@
 {
-  # services.easyeffects.enable = true;
-  services.pulseeffects.enable = true;
+  services.easyeffects.enable = true;
 }
