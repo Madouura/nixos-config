@@ -143,7 +143,7 @@
         ];
 
         "stream.properties" = {
-          "resample.quality" = 8;
+          "resample.quality" = 10;
         };
       };
 
