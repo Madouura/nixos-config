@@ -27,9 +27,9 @@
         "context.properties" = {
           "link.max-buffers" = 64;
           "log.level" = 2;
-          "default.clock.min-quantum" = 128;
+          "default.clock.min-quantum" = 256;
           "default.clock.quantum" = 256;
-          "default.clock.max-quantum" = 512;
+          "default.clock.max-quantum" = 256;
           "core.daemon" = true;
           "core.name" = "pipewire-0";
         };
@@ -143,7 +143,7 @@
         ];
 
         "stream.properties" = {
-          "resample.quality" = 10;
+          "resample.quality" = 8;
         };
       };
 

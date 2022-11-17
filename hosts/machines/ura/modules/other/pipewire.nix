@@ -13,24 +13,17 @@
     pipewire = {
       "context.properties" = {
         "default.clock.rate" = 192000;
-
-        "default.clock.allowed-rates" = [
-          44100
-          48000
-          96000
-          192000
-        ];
       };
     };
 
     pipewire-pulse = {
       "pulse.properties" = {
-        "pulse.min.req" = "128/192000";
+        "pulse.min.req" = "256/192000";
         "pulse.default.req" = "256/192000";
-        "pulse.max.req" = "512/192000";
-        "pulse.min.quantum" = "128/192000";
+        "pulse.max.req" = "256/192000";
+        "pulse.min.quantum" = "256/192000";
         "pulse.default.quantum" = "256/192000";
-        "pulse.max.quantum" = "512/192000";
+        "pulse.max.quantum" = "256/192000";
         "pulse.default.format" = "S24LE";
         "server.address" = [ "unix:native" ];
       };
