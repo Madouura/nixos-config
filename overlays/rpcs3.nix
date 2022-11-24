@@ -1,5 +1,5 @@
-{ inputs, ... }: {
+{ pkgs-unstable, ... }: {
   nixpkgs.overlays = [(final: prev: {
-    rpcs3 = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.rpcs3;
+    rpcs3 = pkgs-unstable.rpcs3;
   })];
 }

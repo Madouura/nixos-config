@@ -1,6 +1,6 @@
-{ inputs, ... }: {
+{ pkgs-unstable, ... }: {
   nixpkgs.overlays = [(final: prev: {
-    linuxKernel = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.linuxKernel;
-    linuxPackages_zen = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.linuxPackages_zen;
+    linuxKernel = pkgs-unstable.linuxKernel;
+    linuxPackages_zen = pkgs-unstable.linuxPackages_zen;
   })];
 }

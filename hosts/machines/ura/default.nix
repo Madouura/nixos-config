@@ -13,10 +13,10 @@
     "${inputs.self}/hosts/profiles/system"
     "${inputs.self}/hosts/profiles/users/mado.nix"
 
-    # "${inputs.self}/overlays/linux.nix"
-    # "${inputs.self}/overlays/monero.nix"
-    # "${inputs.self}/overlays/virtiofsd.nix"
-    # "${inputs.self}/overlays/waydroid.nix"
+    "${inputs.self}/overlays/linux.nix"
+    "${inputs.self}/overlays/monero.nix"
+    "${inputs.self}/overlays/virtiofsd.nix"
+    "${inputs.self}/overlays/waydroid.nix"
   ];
 
   system.stateVersion = "22.11";

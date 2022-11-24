@@ -4,15 +4,14 @@
 
     "${inputs.self}/home/profiles"
 
-    # "${inputs.self}/overlays/discord.nix"
-    # "${inputs.self}/overlays/gamescope.nix"
-    # "${inputs.self}/overlays/ledger-live-desktop.nix"
-    # "${inputs.self}/overlays/monero-cli.nix"
-    # "${inputs.self}/overlays/monero-gui.nix"
-    # "${inputs.self}/overlays/p2pool.nix"
-    # "${inputs.self}/overlays/protonup.nix"
-    # "${inputs.self}/overlays/rpcs3.nix"
-    # "${inputs.self}/overlays/xmrig.nix"
+    "${inputs.self}/overlays/discord.nix"
+    "${inputs.self}/overlays/gamescope.nix"
+    "${inputs.self}/overlays/ledger-live-desktop.nix"
+    "${inputs.self}/overlays/monero-cli.nix"
+    "${inputs.self}/overlays/monero-gui.nix"
+    "${inputs.self}/overlays/p2pool.nix"
+    "${inputs.self}/overlays/rpcs3.nix"
+    "${inputs.self}/overlays/xmrig.nix"
   ];
 
   systemd.user.startServices = "sd-switch";
@@ -32,7 +31,6 @@
       "sd-webui.sh".target = "/home/mado/.local/bin/sd-webui.sh";
     };
 
-    # TODO: Figure out overlay issue (Does this apply in 22.11?)
     packages = with pkgs; [
       # Utilities #
       gamescope               # Micro-compositor for Steam
