@@ -1,6 +1,6 @@
+.PHONY: upgrade
 USER = $(shell whoami)
 HOSTNAME = $(shell hostname)
-NIX_FILES = $(shell find . -name '*.nix' -type f)
 
 ifndef USER
 	$(error Username unknown)
@@ -9,6 +9,8 @@ endif
 ifndef HOSTNAME
 	$(error Hostname unknown)
 endif
+
+all: upgrade
 
 home-gc:
 	home-manager expire-generations "-1 second"
@@ -37,6 +39,8 @@ dry:
 
 update:
 	nix flake update
+	nix-channel --update
+	sudo nix-channel --update
 
 upgrade:
 	make update
