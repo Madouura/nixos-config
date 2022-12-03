@@ -7,9 +7,9 @@
       scale = "ewa_lanczossharp";
       cscale = "ewa_lanczossharp";
       video-sync = "display-resample";
-      interpolation = true;
+      interpolation = "";
       tscale = "oversample";
-      no-border = true;
+      no-border = "";
       sub-auto = "fuzzy";
       alang = "jp,jpn,japan";
       slang = "en,eng,english";
