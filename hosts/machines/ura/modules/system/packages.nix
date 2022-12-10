@@ -7,6 +7,7 @@
     nload
     dnsmasq
     screen
+    ledger-live-desktop
     inputs.agenix.defaultPackage.x86_64-linux
   ];
 }

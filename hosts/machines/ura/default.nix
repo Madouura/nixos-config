@@ -17,6 +17,7 @@
     "${inputs.self}/overlays/monero.nix"
     "${inputs.self}/overlays/virtiofsd.nix"
     "${inputs.self}/overlays/waydroid.nix"
+    "${inputs.self}/overlays/ledger-live-desktop.nix"
   ];
 
   system.stateVersion = "22.11";
