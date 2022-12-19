@@ -41,6 +41,7 @@
       text_color = "ffffff";
       round_corners = 0;
       toggle_hud = "Shift_R+F12";
+      no_display = true;
     };
   };
 }
