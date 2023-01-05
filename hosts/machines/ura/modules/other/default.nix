@@ -7,5 +7,6 @@
     ./openssh.nix
     ./pipewire.nix
     # ./waydroid.nix
+    ./xdg.nix
   ];
 }

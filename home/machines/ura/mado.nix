@@ -24,8 +24,13 @@
     username = "mado";
     homeDirectory = "/home/mado";
     sessionPath = [ "/home/mado/.local/bin" ];
-    sessionVariables = { EDITOR = "nano"; };
     shellAliases = { ls = "ls --color"; };
+
+    sessionVariables = {
+      EDITOR = "nano";
+      VISUAL = "codium";
+      MOZ_ENABLE_WAYLAND = 1;
+    };
 
     file = {
       "mining.sh".target = "/home/mado/.local/bin/mining.sh";

@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox.override { cfg.enableGnomeExtensions = true; };
+
+    package = pkgs.firefox-wayland.override {
+      cfg.enableGnomeExtensions = true;
+    };
   };
 }
