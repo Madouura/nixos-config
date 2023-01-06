@@ -4,6 +4,7 @@
     ./gamemode.nix
     ./gnome.nix
     # ./libvirtd.nix
+    ./mullvad.nix
     ./openssh.nix
     ./pipewire.nix
     # ./waydroid.nix
