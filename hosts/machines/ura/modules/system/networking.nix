@@ -13,6 +13,14 @@
         { from = 13370; to = 13379; } # Standard
         { from = 13380; to = 13389; } # Windows VM
       ];
+
+      allowedTCPPorts = [
+        18080 # Monero
+      ];
+
+      allowedUDPPorts = [
+        18080 # Monero
+      ];
     };
 
     interfaces = {
