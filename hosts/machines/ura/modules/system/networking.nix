@@ -16,10 +16,12 @@
 
       allowedTCPPorts = [
         18080 # Monero
+        56873 # Mullvad
       ];
 
       allowedUDPPorts = [
         18080 # Monero
+        56873 # Mullvad
       ];
     };
 
