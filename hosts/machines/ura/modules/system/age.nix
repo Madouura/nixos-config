@@ -1,6 +1,4 @@
 { inputs, ... }: {
-  imports = [ inputs.agenix.nixosModules.age ];
-
   age.secrets = {
     gdm_user = {
       file = "${inputs.self}/secrets/gdm.age";

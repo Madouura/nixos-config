@@ -59,44 +59,60 @@
 
     nixosConfigurations = {
       # Desktop
-      ura = nixpkgs.lib.nixosSystem {
-        pkgs = nixpkgsFor.x86_64-linux;
-        modules = [ ./hosts/machines/ura ];
+      ura = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        pkgs = nixpkgsFor.${system};
+
+        modules = [
+          agenix.nixosModules.default
+          ./hosts/machines/ura
+        ];
+
         specialArgs = {
           inherit inputs;
-          pkgs-unstable = unstableFor.x86_64-linux;
+          pkgs-unstable = unstableFor.${system};
         };
       };
 
       # Laptop
-      tsuki = nixpkgs.lib.nixosSystem {
-        pkgs = nixpkgsFor.x86_64-linux;
-        modules = [ ./hosts/machines/tsuki ];
+      tsuki = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        pkgs = nixpkgsFor.${system};
+
+        modules = [
+          agenix.nixosModules.default
+          ./hosts/machines/tsuki
+        ];
+
         specialArgs = {
           inherit inputs;
-          pkgs-unstable = unstableFor.x86_64-linux;
+          pkgs-unstable = unstableFor.${system};
         };
       };
     };
 
     homeConfigurations = {
       # Desktop
-      "mado@ura" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgsFor.x86_64-linux;
+      "mado@ura" = home-manager.lib.homeManagerConfiguration rec {
+        system = "x86_64-linux";
+        pkgs = nixpkgsFor.${system};
         modules = [ ./home/machines/ura/mado.nix ];
+
         extraSpecialArgs = {
           inherit inputs;
-          pkgs-unstable = unstableFor.x86_64-linux;
+          pkgs-unstable = unstableFor.${system};
         };
       };
 
       # Laptop
-      "mado@tsuki" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgsFor.x86_64-linux;
+      "mado@tsuki" = home-manager.lib.homeManagerConfiguration rec {
+        system = "x86_64-linux";
+        pkgs = nixpkgsFor.${system};
         modules = [ ./home/machines/tsuki/mado.nix ];
+
         extraSpecialArgs = {
           inherit inputs;
-          pkgs-unstable = unstableFor.x86_64-linux;
+          pkgs-unstable = unstableFor.${system};
         };
       };
     };
