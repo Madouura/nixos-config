@@ -93,26 +93,24 @@
 
     homeConfigurations = {
       # Desktop
-      "mado@ura" = home-manager.lib.homeManagerConfiguration rec {
-        system = "x86_64-linux";
-        pkgs = nixpkgsFor.${system};
+      "mado@ura" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgsFor.x86_64-linux;
         modules = [ ./home/machines/ura/mado.nix ];
 
         extraSpecialArgs = {
           inherit inputs;
-          pkgs-unstable = unstableFor.${system};
+          pkgs-unstable = unstableFor.x86_64-linux;
         };
       };
 
       # Laptop
-      "mado@tsuki" = home-manager.lib.homeManagerConfiguration rec {
-        system = "x86_64-linux";
-        pkgs = nixpkgsFor.${system};
+      "mado@tsuki" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgsFor.x86_64-linux;
         modules = [ ./home/machines/tsuki/mado.nix ];
 
         extraSpecialArgs = {
           inherit inputs;
-          pkgs-unstable = unstableFor.${system};
+          pkgs-unstable = unstableFor.x86_64-linux;
         };
       };
     };
