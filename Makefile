@@ -41,6 +41,8 @@ update:
 	nix flake update
 	nix-channel --update
 	sudo nix-channel --update
+	git commit -am "flake: update" || true
+	git push
 
 upgrade:
 	make update
