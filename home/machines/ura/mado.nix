@@ -7,7 +7,7 @@
     # Stay in sync with system overlays
     "${inputs.self}/overlays/linux.nix"
 
-    "${inputs.self}/overlays/discord.nix"
+    # "${inputs.self}/overlays/discord.nix"
     "${inputs.self}/overlays/gamescope.nix"
     "${inputs.self}/overlays/monero-cli.nix"
     "${inputs.self}/overlays/monero-gui.nix"
