@@ -6,7 +6,7 @@
     # ./libvirtd.nix
     ./mullvad.nix
     ./openssh.nix
-    ./pipewire.nix
+    # ./pipewire.nix
     # ./waydroid.nix
     ./xdg.nix
   ];
