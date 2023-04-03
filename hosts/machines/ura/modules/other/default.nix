@@ -3,7 +3,7 @@
     ./corectrl.nix
     ./gamemode.nix
     ./gnome.nix
-    ./libvirtd.nix
+    # ./libvirtd.nix
     ./mullvad.nix
     ./openssh.nix
     # ./pipewire.nix
