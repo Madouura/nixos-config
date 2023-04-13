@@ -110,8 +110,8 @@
 
     extraConfig = ''
       audio_output {
-        type  "pulse"
-        name  "PulseAudio Sound Server"
+        type  "pipewire"
+        name  "PipeWire Sound Server"
       }
     '';
   };
