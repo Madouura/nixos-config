@@ -8,7 +8,35 @@
         ["bluez5.enable-msbc"] = true,
         ["bluez5.enable-hw-volume"] = true,
         ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-      };
+      }
+    '';
+
+    "wireplumber/alsa.lua.d/51-alsa-monitor.lua".text = ''
+      rules = {
+        {
+          matches = [{ node.name = "alsa_output.usb-Schiit_Audio_Schiit_Unison_Modius-00.iec958-stereo" }],
+
+          actions = {
+            update-props = {
+              audio.format = "S24_3LE",
+              audio.rate = 192000,
+              api.alsa.period-size = 256
+            }
+          }
+        }
+
+        {
+          matches = [{ node.name = "alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7DZDPB160B058-00.iec958-stereo" }],
+
+          actions = {
+            update-props = {
+              audio.format = "S32_LE",
+              audio.rate = 48000,
+              api.alsa.period-size = 256
+            }
+          }
+        }
+      }
     '';
   };
 
@@ -25,25 +53,13 @@
     config = {
       pipewire = {
         "context.properties" = {
-          "link.max-buffers" = 64;
+          "link.max-buffers" = 16; # version < 3 clients can't handle more than this
           "log.level" = 2;
+          "default.clock.rate" = 192000;
           "default.clock.min-quantum" = 256;
-          "default.clock.quantum" = 256;
           "default.clock.max-quantum" = 256;
           "core.daemon" = true;
           "core.name" = "pipewire-0";
-        };
-
-        "context.spa-libs" = {
-          "audio.convert.*" = "audioconvert/libspa-audioconvert";
-          "avb.*" = "avb/libspa-avb";
-          "api.alsa.*" = "alsa/libspa-alsa";
-          "api.v4l2.*" = "v4l2/libspa-v4l2";
-          "api.libcamera.*" = "libcamera/libspa-libcamera";
-          "api.bluez5.*" = "bluez5/libspa-bluez5";
-          "api.vulkan.*" = "vulkan/libspa-vulkan";
-          "api.jack.*" = "jack/libspa-jack";
-          "support.*" = "support/libspa-support";
         };
 
         "context.modules" = [
@@ -52,10 +68,10 @@
             flags = [ "ifexists" "nofail" ];
 
             args = {
-              "nice.level" = -11;
+              "nice.level" = -15;
               "rt.prio" = 88;
-              "rt.time.soft" = -1;
-              "rt.time.hard" = -1;
+              "rt.time.soft" = 200000;
+              "rt.time.hard" = 200000;
             };
           }
 
@@ -81,41 +97,11 @@
           { name = "libpipewire-module-link-factory"; }
           { name = "libpipewire-module-session-manager"; }
         ];
-
-        "context.objects" = [
-          {
-            factory = "spa-node-factory";
-
-            args = {
-                "factory.name"    = "support.node.driver";
-                "node.name"       = "Dummy-Driver";
-                "node.group"      = "pipewire.dummy";
-                "priority.driver" = 20000;
-            };
-          }
-
-          {
-            factory = "spa-node-factory";
-
-            args = {
-                "factory.name"    = "support.node.driver";
-                "node.name"       = "Freewheel-Driver";
-                "priority.driver" = 19000;
-                "node.group"      = "pipewire.freewheel";
-                "node.freewheel"  = true;
-            };
-          }
-        ];
       };
 
       pipewire-pulse = {
         "context.properties" = {
           "log.level" = 2;
-        };
-
-        "context.spa-libs" = {
-          "audio.convert.*" = "audioconvert/libspa-audioconvert";
-          "support.*" = "support/libspa-support";
         };
 
         "context.modules" = [
@@ -124,10 +110,10 @@
             flags = [ "ifexists" "nofail" ];
 
             args = {
-              "nice.level" = -11;
+              "nice.level" = -15;
               "rt.prio" = 88;
-              "rt.time.soft" = -1;
-              "rt.time.hard" = -1;
+              "rt.time.soft" = 200000;
+              "rt.time.hard" = 200000;
             };
           }
 
@@ -138,12 +124,21 @@
 
           {
             name = "libpipewire-module-protocol-pulse";
-            args = { };
+
+            args = {
+              "pulse.min.req" = "256/192000";
+              "pulse.default.req" = "256/192000";
+              "pulse.max.req" = "256/192000";
+              "pulse.min.quantum" = "256/192000";
+              "pulse.max.quantum" = "256/192000";
+              "server.address" = [ "unix:native" ];
+            };
           }
         ];
 
         "stream.properties" = {
-          "resample.quality" = 10;
+          "resample.quality" = 4;
+          "node.latency" = "256/192000";
         };
       };
 
@@ -152,8 +147,10 @@
           "log.level" = 2;
         };
 
-        "context.spa-libs" = {
-          "support.*" = "support/libspa-support";
+        "jack.properties" = {
+          "node.latency" = "256/192000";
+          "node.rate" = "1/192000";
+          "node.quantum" = "256/192000";
         };
 
         "context.modules" = [
@@ -162,9 +159,10 @@
             flags = [ "ifexists" "nofail" ];
 
             args = {
+              "nice.level" = -15;
               "rt.prio" = 88;
-              "rt.time.soft" = -1;
-              "rt.time.hard" = -1;
+              "rt.time.soft" = 200000;
+              "rt.time.hard" = 200000;
             };
           }
 
