@@ -6,7 +6,7 @@ let
     tsuki = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOSID66VGITM+qDNHJxJuPPkow0pZwJcg118S6EuWvRT root@tsuki";
   };
 in {
-  "avatar.png.age".publicKeys = allSystems;
+  "avatar.jpg.age".publicKeys = allSystems;
   "gdm.age".publicKeys = allSystems;
   "ura_monitors.xml.age".publicKeys = [ systems.ura ];
 }

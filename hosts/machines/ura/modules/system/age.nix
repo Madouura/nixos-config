@@ -7,7 +7,7 @@
     };
 
     gdm_avatar = {
-      file = "${inputs.self}/secrets/avatar.png.age";
+      file = "${inputs.self}/secrets/avatar.jpg.age";
       path = "/var/lib/AccountsService/icons/mado";
       mode = "444";
     };
