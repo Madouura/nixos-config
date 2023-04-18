@@ -9,6 +9,7 @@
     screen
     ledger-live-desktop
     blender
+    hip
     inputs.agenix.packages.x86_64-linux.default
   ];
 }
