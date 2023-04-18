@@ -8,6 +8,7 @@
     dnsmasq
     screen
     ledger-live-desktop
+    blender
     inputs.agenix.packages.x86_64-linux.default
   ];
 }
