@@ -16,6 +16,20 @@
         item = "memlock";
         value = "unlimited";
       }
+
+      {
+        domain = "*";
+        type = "hard";
+        item = "nofile";
+        value = "128000";
+      }
+
+      {
+        domain = "*";
+        type = "soft";
+        item = "nofile";
+        value = "128000";
+      }
     ];
   };
 }
