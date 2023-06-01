@@ -20,7 +20,7 @@
 
   home = {
     enableNixpkgsReleaseCheck = true;
-    stateVersion = "22.11";
+    stateVersion = "23.05";
     username = "mado";
     homeDirectory = "/home/mado";
     sessionPath = [ "/home/mado/.local/bin" ];
@@ -28,7 +28,7 @@
 
     sessionVariables = {
       EDITOR = "nano";
-      VISUAL = "codium";
+      # VISUAL = "codium"; # FIXME: Problems with rebasing
       MOZ_ENABLE_WAYLAND = 1;
     };
 

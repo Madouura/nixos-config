@@ -17,5 +17,6 @@
     ./timesyncd.nix
     ./tor.nix
     ./zram.nix
+    ./zsh.nix
   ];
 }

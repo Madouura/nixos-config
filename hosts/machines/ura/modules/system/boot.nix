@@ -1,5 +1,6 @@
-{
+{ pkgs, ... }: {
   boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "nct6775" "jc42" ];
     kernel.sysctl = { "kernel.sysrq" = 1; };
     initrd.availableKernelModules = [ "amdgpu" ];

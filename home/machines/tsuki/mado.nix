@@ -16,7 +16,7 @@
 
   home = {
     enableNixpkgsReleaseCheck = true;
-    stateVersion = "22.11";
+    stateVersion = "23.05";
     username = "mado";
     homeDirectory = "/home/mado";
     sessionVariables = { EDITOR = "nano" };

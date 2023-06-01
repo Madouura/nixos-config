@@ -1,6 +1,6 @@
 {
   services.xserver = {
-    digimend.enable = true;
+    # digimend.enable = true; # TODO: FIXME
     videoDrivers = [ "amdgpu" ];
 
     deviceSection = ''

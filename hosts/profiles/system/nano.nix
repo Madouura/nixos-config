@@ -1,7 +1,7 @@
 {
   environment.variables = {
     EDITOR = "nano";
-    VISUAL = "nano";
+    # VISUAL = "codium"; # FIXME: Problems with rebasing
   };
 
   programs.nano = {

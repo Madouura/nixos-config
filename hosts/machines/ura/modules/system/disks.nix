@@ -1,6 +1,5 @@
-{ pkgs, ... }: {
+{
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
     supportedFilesystems = [ "btrfs" ];
     resumeDevice = "/dev/disk/by-uuid/909f3c62-12f5-4220-b224-facd2a6ce364";
 
