@@ -20,6 +20,8 @@
       url = "github:jordanisaacs/homeage";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fs2-nixpkgs.url = "github:Madouura/nixpkgs/pr/fs2-old-knossos";
   };
 
   outputs = {
@@ -29,7 +31,8 @@
     nixos-hardware,
     agenix,
     home-manager,
-    homeage
+    homeage,
+    fs2-nixpkgs
   } @inputs: let
     supportedSystems = [ "x86_64-linux" ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;

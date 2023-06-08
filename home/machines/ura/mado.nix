@@ -75,6 +75,9 @@
       monero-gui              # Official Monero client (GUI)
       p2pool                  # Decentralized monero mining pool
       xmrig                   # The actual miner
+
+      # Games #
+      inputs.fs2-nixpkgs.legacyPackages.x86_64-linux.fs2-knossos
     ];
   };
 
