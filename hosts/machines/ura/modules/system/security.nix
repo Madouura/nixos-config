@@ -21,14 +21,14 @@
         domain = "*";
         type = "hard";
         item = "nofile";
-        value = "128000";
+        value = "524288";
       }
 
       {
         domain = "*";
         type = "soft";
         item = "nofile";
-        value = "128000";
+        value = "524288";
       }
     ];
   };
