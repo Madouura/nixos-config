@@ -44,6 +44,22 @@
         "type": "github"
       }
     },
+    "fs2-nixpkgs": {
+      "locked": {
+        "lastModified": 1686221037,
+        "narHash": "sha256-aIzbSFgbbKlZ/aPpt1L8BYKEXGviYJX21/E6OQ0t1i4=",
+        "owner": "Madouura",
+        "repo": "nixpkgs",
+        "rev": "d00af9432a5d741d2bd9d66d0510eaaab4249640",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Madouura",
+        "ref": "pr/fs2-old-knossos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -108,11 +124,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1684899633,
-        "narHash": "sha256-NtwerXX8UFsoNy6k+DukJMriWtEjQtMU/Urbff2O2Dg=",
+        "lastModified": 1686217350,
+        "narHash": "sha256-Nb9b3m/GEK8jyFsYfUkXGsqj6rH05GgJ2QWcNNbK7dw=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "4cc688ee711159b9bcb5a367be44007934e1a49d",
+        "rev": "e4b34b90f27696ec3965fa15dcbacc351293dc67",
         "type": "github"
       },
       "original": {
@@ -123,11 +139,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1686087926,
-        "narHash": "sha256-mXzfJpCCT7Vup2sC3rZPB/AbEW+uBjwT027XWm7R6rA=",
+        "lastModified": 1686217150,
+        "narHash": "sha256-60S6pVv2KgM1MPkLJmhFzkoo6/OibjyKqjryfvsE7W4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9ea6dd599d2781168e36486745b5d17e826ab015",
+        "rev": "248a0d15f15da0725d8346400796c3dc114ce201",
         "type": "github"
       },
       "original": {
@@ -139,11 +155,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1685931219,
-        "narHash": "sha256-8EWeOZ6LKQfgAjB/USffUSELPRjw88A+xTcXnOUvO5M=",
+        "lastModified": 1686020360,
+        "narHash": "sha256-Wee7lIlZ6DIZHHLiNxU5KdYZQl0iprENXa/czzI6Cj4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7409480d5c8584a1a83c422530419efe4afb0d19",
+        "rev": "4729ffac6fd12e26e5a8de002781ffc49b0e94b7",
         "type": "github"
       },
       "original": {
@@ -156,6 +172,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "fs2-nixpkgs": "fs2-nixpkgs",
         "home-manager": "home-manager_2",
         "homeage": "homeage",
         "nixos-hardware": "nixos-hardware",
