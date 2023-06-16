@@ -4,16 +4,16 @@
     kernelParams = [ "iommu=pt" ];
     kernel.sysctl = { "kernel.sysrq" = 1; };
     resumeDevice = "/dev/disk/by-uuid/0f86d8c2-23a9-4db6-8ed3-0ea502ec54cb";
-    extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+    # extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
 
     kernelModules = [
       "nct6775"
-      "kvmfr"
+      # "kvmfr"
     ];
 
-    extraModprobeConfig = ''
-      options kvmfr static_size_mb=256
-    '';
+    # extraModprobeConfig = ''
+    #   options kvmfr static_size_mb=256
+    # '';
 
     loader = {
       efi.canTouchEfiVariables = true;
