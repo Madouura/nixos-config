@@ -14,40 +14,33 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5f2a4217-4ff7-462c-a3e9-70601ef87358";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
+    { device = "/dev/disk/by-uuid/35e6448b-3e42-4857-9427-8854050a82ac";
+      fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."cryptrot1".device = "/dev/disk/by-uuid/07cf353c-aff3-4663-b7c6-c83355377092";
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/2f43b7cd-6277-4d7c-a202-9d5665607455";
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/5f2a4217-4ff7-462c-a3e9-70601ef87358";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
+  fileSystems."/mnt/cach" =
+    { device = "/dev/disk/by-uuid/cdf53ff1-91ca-4496-a573-e096e8cc6320";
+      fsType = "ext4";
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/5f2a4217-4ff7-462c-a3e9-70601ef87358";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
+  boot.initrd.luks.devices."cryptcach".device = "/dev/disk/by-uuid/662e6233-fd9f-4ee7-8fc9-2a84b2b61653";
+
+  fileSystems."/mnt/stor" =
+    { device = "/dev/disk/by-uuid/7d2d4946-db94-41a0-8c15-6029e0b7a6a0";
+      fsType = "ext4";
     };
+
+  boot.initrd.luks.devices."cryptstor".device = "/dev/disk/by-uuid/5dc8bad3-7bd4-480c-80e1-a6a0a697fd79";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/53A4-9DFD";
+    { device = "/dev/disk/by-uuid/F5DC-9311";
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/stor" =
-    { device = "/dev/disk/by-uuid/8387acb7-5e0a-4359-babd-fa7a942e6f58";
-      fsType = "btrfs";
-      options = [ "subvol=stor" ];
-    };
-
-  boot.initrd.luks.devices."cryptstor".device = "/dev/disk/by-uuid/ee5737d8-61e1-42b6-92d7-be575f99e1e7";
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/909f3c62-12f5-4220-b224-facd2a6ce364"; }
+    [ { device = "/dev/disk/by-uuid/0f86d8c2-23a9-4db6-8ed3-0ea502ec54cb"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -57,10 +50,9 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp18s0f3u1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

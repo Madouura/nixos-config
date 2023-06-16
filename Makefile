@@ -1,29 +1,15 @@
-.PHONY: upgrade
-USER = $(shell whoami)
 HOSTNAME = $(shell hostname)
-
-ifndef USER
-	$(error Username unknown)
-endif
 
 ifndef HOSTNAME
 	$(error Hostname unknown)
 endif
 
+.PHONY: update upgrade upgrade-boot
+
 all: upgrade
 
-home-gc:
-	home-manager expire-generations "-1 second"
-
-system-gc:
-	sudo nix-collect-garbage -d
-
 gc:
-	make home-gc
-	make system-gc
-
-hm:
-	home-manager switch --flake .#${USER}@${HOSTNAME}
+	sudo nix-collect-garbage --delete-older-than 7d
 
 switch:
 	nixos-rebuild switch --use-remote-sudo --flake .#${HOSTNAME} -L
@@ -47,4 +33,7 @@ update:
 upgrade:
 	make update
 	make switch
-	make hm
+
+upgrade-boot:
+	make update
+	make boot

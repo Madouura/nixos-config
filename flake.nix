@@ -11,16 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    homeage = {
-      url = "github:jordanisaacs/homeage";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/236650 is merged
     fs2-nixpkgs.url = "github:Madouura/nixpkgs/pr/fs2-old-knossos";
   };
 
@@ -30,8 +21,6 @@
     nixpkgs-unstable,
     nixos-hardware,
     agenix,
-    home-manager,
-    homeage,
     fs2-nixpkgs
   } @inputs: let
     supportedSystems = [ "x86_64-linux" ];
@@ -40,15 +29,15 @@
     nixpkgsFor = forAllSystems (system: import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-    } );
+    });
 
     unstableFor = forAllSystems (system: import nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
-    } );
+    });
   in {
     devShells = forAllSystems ( system: let
-      pkgs = nixpkgsFor.${ system };
+      pkgs = nixpkgsFor.${system};
     in {
       default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
@@ -58,7 +47,7 @@
           gnupg
         ];
       };
-    } );
+    });
 
     nixosConfigurations = {
       # Desktop
@@ -67,6 +56,12 @@
         pkgs = nixpkgsFor.${system};
 
         modules = [
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.common-hidpi
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-pc-ssd
           agenix.nixosModules.default
           ./hosts/machines/ura
         ];
@@ -74,46 +69,6 @@
         specialArgs = {
           inherit inputs;
           pkgs-unstable = unstableFor.${system};
-        };
-      };
-
-      # Laptop
-      tsuki = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        pkgs = nixpkgsFor.${system};
-
-        modules = [
-          agenix.nixosModules.default
-          ./hosts/machines/tsuki
-        ];
-
-        specialArgs = {
-          inherit inputs;
-          pkgs-unstable = unstableFor.${system};
-        };
-      };
-    };
-
-    homeConfigurations = {
-      # Desktop
-      "mado@ura" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgsFor.x86_64-linux;
-        modules = [ ./home/machines/ura/mado.nix ];
-
-        extraSpecialArgs = {
-          inherit inputs;
-          pkgs-unstable = unstableFor.x86_64-linux;
-        };
-      };
-
-      # Laptop
-      "mado@tsuki" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgsFor.x86_64-linux;
-        modules = [ ./home/machines/tsuki/mado.nix ];
-
-        extraSpecialArgs = {
-          inherit inputs;
-          pkgs-unstable = unstableFor.x86_64-linux;
         };
       };
     };

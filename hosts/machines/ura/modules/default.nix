@@ -1,6 +1,21 @@
 {
   imports = [
-    ./other
-    ./system
+    ./age.nix
+    ./boot.nix
+    ./environment.nix
+    ./fileSystems.nix
+    ./fonts.nix
+    ./hardware.nix
+    ./networking.nix
+    ./nix.nix
+    ./powerManagement.nix
+    ./programs.nix
+    ./security.nix
+    ./services.nix
+    ./systemd.nix
+    ./time.nix
+    ./users.nix
+    ./virtualisation.nix
+    ./zramSwap.nix
   ];
 }
