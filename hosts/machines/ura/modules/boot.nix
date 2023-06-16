@@ -12,7 +12,7 @@
     ];
 
     extraModprobeConfig = ''
-      options kvmfr static_size_mb=128
+      options kvmfr static_size_mb=256
     '';
 
     loader = {
