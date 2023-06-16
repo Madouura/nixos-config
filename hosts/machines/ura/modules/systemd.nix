@@ -18,7 +18,7 @@
         systemctl set-property --runtime -- system.slice AllowedCPUs=$ALLOWED_CPUS
         systemctl set-property --runtime -- init.scope AllowedCPUs=$ALLOWED_CPUS
 
-        echo 8192 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
+        echo 9216 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
         sync
         echo 3 > /proc/sys/vm/drop_caches
         sync
