@@ -2,7 +2,6 @@
   programs = {
     corectrl.enable = true;
     steam.enable = true;
-    starship.enable = true;
     firefox.enable = true;
     git.enable = true;
 
@@ -21,6 +20,11 @@
         set tabstospaces
         set tabsize 2
       '';
+    };
+
+    starship = {
+      enable = true;
+      settings.command_timeout = 1000;
     };
 
     gamemode = {
