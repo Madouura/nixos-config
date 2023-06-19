@@ -46,11 +46,11 @@
     },
     "fs2-nixpkgs": {
       "locked": {
-        "lastModified": 1686221037,
-        "narHash": "sha256-aIzbSFgbbKlZ/aPpt1L8BYKEXGviYJX21/E6OQ0t1i4=",
+        "lastModified": 1687197878,
+        "narHash": "sha256-rrwhi2iu/LAsUkor7XfUbeXyuxOZLmpnZLqFvHMUM1U=",
         "owner": "Madouura",
         "repo": "nixpkgs",
-        "rev": "d00af9432a5d741d2bd9d66d0510eaaab4249640",
+        "rev": "bf81b178ed71f331543f92bb9e83fa7147763e42",
         "type": "github"
       },
       "original": {
