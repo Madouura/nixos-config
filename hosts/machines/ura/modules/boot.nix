@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "iommu=pt" ];
     kernel.sysctl = { "kernel.sysrq" = 1; };
     resumeDevice = "/dev/disk/by-uuid/0f86d8c2-23a9-4db6-8ed3-0ea502ec54cb";
