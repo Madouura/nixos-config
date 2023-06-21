@@ -15,8 +15,5 @@
     fi
   '';
 in {
-  systemd.tmpfiles.rules = [
-    "L+ /var/lib/libvirt/hooks/qemu - - - - ${qemuHook}"
-    "f /dev/shm/looking-glass 0660 mado kvm -"
-  ];
+  systemd.tmpfiles.rules = [ "L+ /var/lib/libvirt/hooks/qemu - - - - ${qemuHook}" ];
 }
