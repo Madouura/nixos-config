@@ -32,11 +32,15 @@
       preDeviceCommands = ''
         DEVS="0000:10:00.0 0000:10:00.1"
 
+        # Fix REBAR issue with windows VM by setting this to 8 MB.
+        echo -n 3 > /sys/bus/pci/devices/0000:10:00.0/resource2_resize
+
         for DEV in $DEVS; do
           echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
         done
 
         modprobe -i vfio-pci
+        modprobe -i amdgpu
       '';
     };
   };

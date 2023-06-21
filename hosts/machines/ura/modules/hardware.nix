@@ -3,6 +3,6 @@
     bluetooth.enable = true;
     xone.enable = true;
     opengl.enable = true;
-    amdgpu.loadInInitrd = false;
+    amdgpu.loadInInitrd = false; # Do it manually for VFIO.
   };
 }
