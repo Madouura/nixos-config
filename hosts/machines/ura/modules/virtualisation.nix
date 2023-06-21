@@ -7,7 +7,6 @@
     qemu = {
       ovmf.enable = true;
       swtpm.enable = true;
-      runAsRoot = false;
 
       # cgroup_device_acl = [
       #   "/dev/null", "/dev/full", "/dev/zero",
@@ -16,6 +15,11 @@
       #   "/dev/rtc","/dev/hpet", "/dev/sev",
       #   "/dev/kvmfr0"
       # ]
+      verbatimConfig = ''
+        namespaces = []
+        user = "mado"
+        group = "users"
+      '';
     };
   };
 }
