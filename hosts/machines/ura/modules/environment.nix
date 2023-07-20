@@ -52,6 +52,7 @@
       looking-glass-client
       scream
       pinentry-curses
+      pcsx2
       gnomeExtensions.appindicator
       gnomeExtensions.freon
       inputs.fs2-nixpkgs.legacyPackages.x86_64-linux.fs2-knossos # TODO: Remove extra when PR is merged
