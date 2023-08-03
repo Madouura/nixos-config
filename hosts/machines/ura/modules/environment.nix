@@ -14,6 +14,7 @@
     variables = {
       EDITOR = "nano";
       VISUAL = "codium";
+      QT_QPA_PLATFORM = "wayland"; # Fix QT applications TODO: Remove when fixed upstream
     };
 
     etc = {
