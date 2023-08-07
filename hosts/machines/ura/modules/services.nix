@@ -30,7 +30,7 @@
 
     xserver = {
       enable = true;
-      # digimend.enable = true; # TODO: Broken
+      digimend.enable = true;
       desktopManager.gnome.enable = true;
       videoDrivers = [ "amdgpu" ];
 
