@@ -8,39 +8,23 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "bcache" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/35e6448b-3e42-4857-9427-8854050a82ac";
-      fsType = "ext4";
+    { device = "/dev/sda1:/dev/nvme0n1p3:/dev/nvme1n1p1";
+      fsType = "bcachefs";
     };
-
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/2f43b7cd-6277-4d7c-a202-9d5665607455";
-
-  fileSystems."/mnt/cach" =
-    { device = "/dev/disk/by-uuid/cdf53ff1-91ca-4496-a573-e096e8cc6320";
-      fsType = "ext4";
-    };
-
-  boot.initrd.luks.devices."cryptcach".device = "/dev/disk/by-uuid/662e6233-fd9f-4ee7-8fc9-2a84b2b61653";
-
-  fileSystems."/mnt/stor" =
-    { device = "/dev/disk/by-uuid/7d2d4946-db94-41a0-8c15-6029e0b7a6a0";
-      fsType = "ext4";
-    };
-
-  boot.initrd.luks.devices."cryptstor".device = "/dev/disk/by-uuid/5dc8bad3-7bd4-480c-80e1-a6a0a697fd79";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F5DC-9311";
+    { device = "/dev/disk/by-uuid/18DC-E6BF";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/0f86d8c2-23a9-4db6-8ed3-0ea502ec54cb"; }
+    [ { device = "/dev/disk/by-uuid/34a6f1bc-d84f-44c8-a9aa-41eec9a15065"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -50,9 +34,8 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp18s0f3u1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -29,7 +29,18 @@
     nixpkgsFor = forAllSystems (system: import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-    });
+
+      # TODO: Find better way to do this
+      overlays = let
+        pkgs-unstable = unstableFor.${system};
+      in [(final: prev: {
+        # linuxKernel = pkgs-unstable.linuxKernel;
+        # linuxPackages = pkgs-unstable.linuxPackages;
+        linuxPackages_testing_bcachefs = pkgs-unstable.linuxPackages_testing_bcachefs;
+        linux_testing_bcachefs = pkgs-unstable.linux_testing_bcachefs;
+        bcachefs-tools = pkgs-unstable.bcachefs-tools;
+      })];
+   });
 
     unstableFor = forAllSystems (system: import nixpkgs-unstable {
       inherit system;

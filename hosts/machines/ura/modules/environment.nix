@@ -2,7 +2,6 @@
   environment = {
     shells = with pkgs; [
       bash
-      ion
       zsh
     ];
 

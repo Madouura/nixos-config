@@ -7,9 +7,9 @@
     udev = {
       packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
-      # extraRules = ''
-      #   SUBSYSTEM=="kvmfr", OWNER="mado", GROUP="kvm", MODE="0660"
-      # '';
+      extraRules = ''
+        SUBSYSTEM=="kvmfr", OWNER="mado", GROUP="kvm", MODE="0660"
+      '';
     };
 
     tor = {

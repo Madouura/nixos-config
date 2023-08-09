@@ -8,17 +8,18 @@
       ovmf.enable = true;
       swtpm.enable = true;
 
-      # cgroup_device_acl = [
-      #   "/dev/null", "/dev/full", "/dev/zero",
-      #   "/dev/random", "/dev/urandom",
-      #   "/dev/ptmx", "/dev/kvm", "/dev/kqemu",
-      #   "/dev/rtc","/dev/hpet", "/dev/sev",
-      #   "/dev/kvmfr0"
-      # ]
       verbatimConfig = ''
         namespaces = []
         user = "mado"
         group = "users"
+
+        cgroup_device_acl = [
+          "/dev/null", "/dev/full", "/dev/zero",
+          "/dev/random", "/dev/urandom",
+          "/dev/ptmx", "/dev/kvm", "/dev/kqemu",
+          "/dev/rtc","/dev/hpet", "/dev/sev",
+          "/dev/kvmfr0"
+        ]
       '';
     };
   };

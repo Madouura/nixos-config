@@ -1,3 +1,4 @@
 {
-  powerManagement.cpuFreqGovernor = "performance"; # ondemand is missing because of amd_pstate, intentional
+  # 'ondemand' is intentionally missing because of amd_pstate
+  powerManagement.cpuFreqGovernor = "performance";
 }

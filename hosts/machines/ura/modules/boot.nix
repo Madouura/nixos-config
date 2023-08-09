@@ -1,19 +1,19 @@
-{ config, pkgs, ... }: {
+{ config, ... }: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [ "iommu=pt" ];
     kernel.sysctl = { "kernel.sysrq" = 1; };
-    resumeDevice = "/dev/disk/by-uuid/0f86d8c2-23a9-4db6-8ed3-0ea502ec54cb";
-    # extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+    resumeDevice = "/dev/disk/by-uuid/34a6f1bc-d84f-44c8-a9aa-41eec9a15065";
+    supportedFilesystems = [ "bcachefs" ];
+    extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
 
     kernelModules = [
       "nct6775"
-      # "kvmfr"
+      "kvmfr"
     ];
 
-    # extraModprobeConfig = ''
-    #   options kvmfr static_size_mb=128
-    # '';
+    extraModprobeConfig = ''
+      options kvmfr static_size_mb=128
+    '';
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -21,8 +21,8 @@
     };
 
     initrd = {
-      luks.devices."cryptswap".device = "/dev/disk/by-uuid/efea25af-f77b-47c0-89e5-be66216d28a9";
-      luks.devices."cryptwrot".device = "/dev/disk/by-uuid/4d55642b-d3c8-4704-bcc4-65b2aa62b75f";
+      supportedFilesystems = [ "bcachefs" ];
+      luks.devices."cryptswap".device = "/dev/disk/by-uuid/d09a55c2-e5fe-4fdc-b03f-fa78e1750c23";
 
       availableKernelModules = [
         "vfio_pci"
