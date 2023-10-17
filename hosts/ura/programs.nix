@@ -1,16 +1,7 @@
 {
   programs = {
     corectrl.enable = true;
-    steam.enable = true;
-    firefox.enable = true;
-    git.enable = true;
-
-    zsh = {
-      enable = true;
-      syntaxHighlighting.enable = true;
-      enableBashCompletion = true;
-      autosuggestions.enable = true;
-    };
+    dconf.enable = true;
 
     nano = {
       syntaxHighlight = true;
@@ -20,11 +11,6 @@
         set tabstospaces
         set tabsize 2
       '';
-    };
-
-    starship = {
-      enable = true;
-      settings.command_timeout = 1000;
     };
 
     gamemode = {
@@ -39,6 +25,21 @@
           amd_performance_level = "high";
         };
       };
+    };
+
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
+
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
     };
   };
 }

@@ -1,9 +1,6 @@
 { pkgs, ... }: {
   fonts = {
-    fontDir.enable = true;
-    fontconfig.enable = true;
-
-    fonts = with pkgs; [
+    packages = with pkgs; [
       nerdfonts
       noto-fonts
       noto-fonts-cjk
@@ -15,6 +12,8 @@
       ipafont
       baekmuk-ttf
       wqy_zenhei
+      lexend
+      material-symbols
     ];
   };
 }

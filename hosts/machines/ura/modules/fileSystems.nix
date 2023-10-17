@@ -1,3 +1,0 @@
-{
-  fileSystems."/boot".options = [ "discard" ];
-}

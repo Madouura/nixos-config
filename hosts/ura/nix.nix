@@ -4,6 +4,7 @@
 
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
+      nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
       active-config.flake = inputs.self;
     };
 

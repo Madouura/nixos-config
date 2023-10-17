@@ -1,9 +1,9 @@
 {
   imports = [
     ./age.nix
+    ./autogen-hwcfg.nix
     ./boot.nix
     ./environment.nix
-    ./fileSystems.nix
     ./fonts.nix
     ./hardware.nix
     ./networking.nix
@@ -12,10 +12,10 @@
     ./programs.nix
     ./security.nix
     ./services.nix
-    ./systemd.nix
+    ./sound.nix
+    ./system.nix
     ./time.nix
     ./users.nix
-    ./virtualisation.nix
     ./zramSwap.nix
   ];
 }

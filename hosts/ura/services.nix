@@ -2,15 +2,8 @@
   services = {
     timesyncd.enable = true;
     printing.enable = true;
+    fwupd.enable = true;
     gnome.gnome-browser-connector.enable = true;
-
-    udev = {
-      packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-      extraRules = ''
-        SUBSYSTEM=="kvmfr", OWNER="mado", GROUP="kvm", MODE="0660"
-      '';
-    };
 
     tor = {
       enable = true;
@@ -38,26 +31,14 @@
         enable = true;
         autoSuspend = false;
       };
-
-      deviceSection = ''
-        Option "TearFree"        "true"
-        Option "VariableRefresh" "true"
-      '';
     };
 
-    mpd = {
+    pipewire = {
       enable = true;
-      startWhenNeeded = true;
-      user = "mado";
-      group = "users";
-      musicDirectory = "/home/mado/Music";
-
-      extraConfig = ''
-        audio_output {
-          type  "pulse"
-          name  "Pulseaudio Sound Server"
-        }
-      '';
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
   };
 }
